@@ -1,11 +1,21 @@
 import org.junit.Test;
 
+
+
 import static org.junit.Assert.*;
 
 public class TestStack {
+
+    Stack p = new Stack(10);
+
+    @Test
+    public void StartStack() {
+        Stack i = new Stack(10);
+
+    }
     @Test
     public void IsEmpty() {
-        Stack p = new Stack();
+
         assertTrue(p.isEmpty());
         assertEquals(0,p.mySize());
 
@@ -13,7 +23,7 @@ public class TestStack {
 
     @Test
     public void pushingOneElement() {
-        Stack p = new Stack();
+
         p.pushing("First");
         assertFalse(p.isEmpty());
         assertEquals(1,p.mySize());
@@ -22,7 +32,7 @@ public class TestStack {
     }
     @Test
     public void pushingTwoElement() {
-        Stack p = new Stack();
+
         p.pushing("First");
         p.pushing("Second");
         assertFalse(p.isEmpty());
@@ -32,7 +42,7 @@ public class TestStack {
     }
     @Test
     public void pushingTwoAndPoppingOneElement() {
-        Stack p = new Stack();
+
         p.pushing("First");
         p.pushing("Second");
         assertFalse(p.isEmpty());
@@ -42,6 +52,20 @@ public class TestStack {
         assertEquals(1,p.mySize());
         assertEquals("First",p.top());
         assertEquals("Second",popped);
+
+    }
+    @Test(expected = RemoveMyEmptyStackException.class)
+    public void removeToEmptyStack() {
+        p.pop();
+
+    }
+
+    @Test(expected = FullStackException.class)
+    public void increaseOnFullStack() {
+
+        for (int i = 0; i <= 10; i++) {
+            p.pushing("element" + i);
+        }
 
     }
 
